@@ -54,6 +54,9 @@
         function updateAmount() {
             var from = document.getElementById("from").value;
             var to = document.getElementById("to").value;
+            var flightClass = document.getElementById("flight_class").value;
+            var scheduleDateTime = document.getElementById("schedule_date").value;
+
 
             var amount = 0;
 
@@ -82,8 +85,11 @@
             } else if (from === "portharcourt" && to === "lagos") {
                 amount = 15000;
             } 
-            
-            
+    
+            localStorage.setItem("from", from);
+            localStorage.setItem("to", to);
+            localStorage.setItem("flightClass", flightClass);
+            localStorage.setItem("scheduleDateTime", scheduleDateTime);
             localStorage.setItem("flightAmount", amount);
             document.getElementById("show").innerHTML = "NGN " + amount;
         }
@@ -98,7 +104,6 @@
     //     alert('Please fill in all fields.');
     //     return;
     // }
-
     let currentBal = +localStorage.getItem('accBal');
     let flightAmount = +localStorage.getItem('flightAmount');
 
@@ -113,7 +118,7 @@
     }
 
         alert("Press OK to confirm transaction");
-        window.location.href = "sucess.html"
+        window.location.href = "confirm.html"
 
 
         // let availableBalance = JSON.parse(localStorage.getItem("accountdetails"));
@@ -129,5 +134,6 @@
         // await window.location.reload("dashboard.html")
     }   
     </script>
+
 </body>
 </html>

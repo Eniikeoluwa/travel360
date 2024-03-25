@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaction receipt</title>
+    <title>Ticket Details</title>
     <link rel="stylesheet" href="./styles/success.css">
 </head>
 <style>
@@ -16,34 +16,33 @@
 </style>
 <body>
     <div class="signup">
-    <h1>Transaction Receipt</h1>
+    <h1>Ticket Details</h1>
     <img src="./images/pic5.png" alt="" />
     <p id="transaction-amount"></p>
-    <p id="receipentacct-number"></p>
-    <p id="receipentacct-bank">Receipent Bank: BanKMe</p>
+    <p id="receipentacct-bank"></p>
     <p id="senderacct-number"></p>
-    <h4>Bank: BankMe</h4>
+    <p id="receipentacct-number"></p>
+    <h4>Travel360</h4>
     <button onclick="printReceipt()">Print</button>
     <button onclick="proceedToDashboard()">Proceed to dashboard</button>
     <button onclick="logout()">Logout</button>
     </div>
 </body>
 <script>
-    let transactionAmount = document.getElementById("transaction-amount");
-    let receipentAcctNumber = document.getElementById("receipentacct-number");
-    let senderAcctNumber = document.getElementById("senderacct-number");
+    let flightFrom = document.getElementById("transaction-amount");
+    let flightTo = document.getElementById("receipentacct-bank");
+    let flightClass = document.getElementById("senderacct-number");
+    let flightAmountt = document.getElementById("receipentacct-number")
 
-    let receivedAcctNumber = (localStorage.getItem("receipent-acctNumber"))
+    let flightFromm = localStorage.getItem("from");
+    let flightToo = localStorage.getItem("to");
+    let flightClasss = localStorage.getItem("flightClass")
+    let flightAmount = localStorage.getItem("flightAmount")
 
-    if(!receivedAcctNumber){
-        receipentAcctNumber.style.display = "none";
-
-    } else {
-        receipentAcctNumber.textContent = `Receipent Account Number: ${receivedAcctNumber}`
-    }
-
-    transactionAmount.textContent = `Amount: $${JSON.parse(localStorage.getItem("transaction-amount"))}`
-    senderAcctNumber.textContent = `Sender Account Number: ${JSON.parse(localStorage.getItem("accountNumber"))};`
+    flightFrom.textContent = `From: ${flightFromm}`
+    flightTo.textContent = `From: ${flightToo}`
+    flightClass.textContent = `FlightClass: ${flightClasss}`
+    flightAmountt.textContent = `Amount: ₦${flightAmount}`
 
     function printReceipt() {
         window.print();
