@@ -1,13 +1,32 @@
+body {
+    font-family: sans-serif;
+    background: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(30,30,30,0.8155637254901961) 24%, rgba(0,212,255,0) 100%), url('../images/background.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+}
+
+input, select, textarea {
+    font-family: sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+    /* width: 100%; */
+    border: 1px solid #cacaca;
+    margin-top: 4px;
+}
+
 .signup {
     position: fixed;
     top: 50%;
     left: 50%;
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 0 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 3px;
     width: 400px;
-    height: 545px;
+    min-height: 470px;
     border-radius: 15px;
 }
 
@@ -34,7 +53,7 @@ form label {
     font-size: 18px;
 }
 
-form input {
+/* form input {
     width: 95%;
     padding: 7px;
     border: none;
@@ -42,7 +61,7 @@ form input {
     border: 1px solid gray;
     border-radius: 3px;
     outline: none;
-}
+} */
 
 button {
     width: 100%;

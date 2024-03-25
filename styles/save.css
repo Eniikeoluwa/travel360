@@ -9,6 +9,10 @@ body {
     font-family: sans-serif;
 }
 
+img {
+    width: 100%;
+}
+
 .signup {
     position: fixed;
     top: 50%;
