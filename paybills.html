@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay bills</title>
+    <link href="./styles/paybills.css" rel="stylesheet">
+</head>
+<body>
+    <div class="signup">
+    <h2>Pay Bills</h2>
+    <form>
+	    <form action="buy_airtime.php" method="post">
+            <label for="network">Select Bill:</label>
+            <select name="network" id="network">
+              <option value="electricity-bill">Electricity bill</option>
+              <option value="tax">Tax</option>
+              <option value="wages">Wage bill</option>
+            </select>
+            <br>
+            <label for="phone_number">Account Number:</label>
+            <input type="text" id="account-number" name="phone_number"><br><br>
+            <label for="phone_number">Bank Name:</label>
+            <input type="text" id="bank-name" name="phone_number"><br><br>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount"><br><br>
+            <label for="amount">Pin:</label>
+		    <input type="number" id="pin" name="pin" min="1" required><br>
+
+		<button onclick="payBill(event)" type="submit">Pay bills</button>
+	</form>
+    </div>
+</body>
+<script>
+    let availableBalance = localStorage.getItem("accountbalance");
+    let billType = document.getElementById("network");
+    let receipentAccount = document.getElementById("account-number");
+    let receipentBank = document.getElementById("bank-name");
+    let amount = document.getElementById("amount");
+    let pin = document.getElementById("pin");
+    let gotten = JSON.parse(localStorage.getItem("accountNumber"));
+
+    function payBill(ev) {
+        ev.preventDefault()
+        if (!receipentAccount.value || !amount.value) {
+        alert('Please fill in all fields.');
+        return;
+    }
+        let payBill = {
+            billType: billType.value,
+            receipentBank: receipentBank.value,
+            receipentAccount: receipentAccount.value,
+            amount: amount.value
+        }
+        console.log(payBill);
+        localStorage.setItem("transaction-amount", amount.value)
+        localStorage.setItem("receipent-acctNumber", receipentAccount.value)
+
+        if (receipentAccount.value == gotten) {
+            alert("Can't send money to self");
+            return;
+        }
+
+        let storedPin = localStorage.getItem("transactionPin");
+        if(pin.value !== storedPin) {
+            alert("Wrong pin");
+            return;
+        } 
+
+        let currentBal = +localStorage.getItem('accBal');
+
+        if (currentBal < amount.value){
+            alert("Not enough funds");
+            return;
+        }
+
+        if (currentBal) {
+            currentBal -= amount.value;
+            localStorage.setItem('accBal', currentBal);
+        }
+
+        alert("Press OK to confirm transaction");
+        window.location.href = "sucess.html"
+
+        // let availableBalance = JSON.parse(localStorage.getItem("accountdetails"));
+        // console.log(availableBalance);
+        // availableBalance = parseFloat(availableBalance);
+        // let amountToRemove = amount.value
+        // availableBalance -= amountToRemove;
+
+        // localStorage.setItem("accountbalance", availableBalance);
+
+    }
+</script>
+</html>

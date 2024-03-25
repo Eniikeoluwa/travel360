@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>travel360</title>
+    <link rel="stylesheet" href="./styles/welcome.css" />
+  </head>
+  <body style="background-color: red;">
+    <div class="signup">
+      <div class="content">
+        <img src="./images/pic5.png" alt="" />
+        <h2>Welcome to travel360.</h2>
+        <h6>Your favorite travel booking platform.</h6>
+        </div>
+      <div class="buttons">
+      <button onclick="create()">CREATE YOUR FREE ACCOUNT</button>
+      <button onclick="logIn()">LOG INTO YOUR ACCOUNT</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    function create() {
+      window.location.href = "signup.html";
+    }
+    function logIn() {
+      window.location.href = "login.html";
+    }
+  </script>
+</html>

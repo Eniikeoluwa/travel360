@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>travel360</title>
+    <link href="./styles/signup.css" rel="stylesheet">
+</head>
+<body style="background-color: red;">
+    <div class="signup">
+        <h2>Create Account</h2>
+        <h6>Open a travel360 account with a few details</h6>
+        <div class="form">
+            <label>Full name</label>
+            <input type="text" placeholder="" id="full-name">
+            <label>Phone Number</label>
+            <input type="number" placeholder="" id="phone-number"> 
+            <label>Email Address</label>
+            <input type="email" placeholder="" id="email"> 
+            <label>Password</label>
+            <input type="text" placeholder="" id="password">
+            <br> 
+            <div class="last-sec">
+            <button onclick="proceed(event)">Create your account</button><br>
+            <p>Already have an account?<a href="login.html">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let fullName = document.getElementById("full-name");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let userArr = [];
+
+        function proceed(ev) {
+            ev.preventDefault()
+            if (!email.value || !password.value) {
+            alert('Please fill in all fields.');
+            return;
+        }
+            let user = {
+                email: email.value,
+                password: password.value
+            }
+            userArr.push(user)
+            console.log(user);
+            localStorage.setItem("loggedUser", JSON.stringify(user))
+            alert('Account created successfully!');
+            window.location.href = "login.html";
+
+        if (localStorage.getItem(user)) {
+            alert('User already exists. Please choose a different username.');
+            return;
+        }
+
+        if (!localStorage.getItem('userFullName')) {
+            localStorage.setItem('userFullName', fullName.value)
+        }
+
+        if (!localStorage.getItem('userPassword')) {
+            localStorage.setItem('userPassword', password.value)
+        }
+
+    }
+    </script>
+</body>
+</html>

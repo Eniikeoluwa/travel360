@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send money</title>
+    <link href="./styles/style3.css" rel="stylesheet">
+</head>
+<body>
+    <div class="signup">
+    <h2>Send Money</h2>
+    <form>
+		<label for="recipientName">Recipient Bank:</label>
+		<input type="text" id="recipientBank" name="recipientName" required>
+
+		<label for="recipientEmail">Recipient Account number:</label>
+		<input type="email" id="recipientAccount" name="recipientEmail" required>
+
+		<label for="amount">Amount:</label>
+		<input type="number" id="amount" name="amount" min="1" required>
+
+		<label for="note">Note:</label>
+		<textarea id="note" name="note"></textarea>
+
+        <label for="amount">Pin:</label>
+		<input type="number" id="pin" name="pin" min="1" required><br>
+
+		<button onclick=sendMoney(event) type="submit">Send Money</button>
+	</form>
+    </div>
+</body>
+<script>
+    let bal = document.querySelector(".bal");
+    let accountInput = document.getElementById("recipientAccount");
+    let amountInput = document.getElementById("amount");
+    let gotten = JSON.parse(localStorage.getItem("accountNumber"));
+    let currentUser = localStorage.getItem("loggedUser");
+    let pin = document.getElementById("pin");
+
+    let receipentBank = document.getElementById("recipientBank");
+    let receipentAccount = document.getElementById("recipientAccount");
+    let amount = document.getElementById("amount");
+    let sendmoneyArr = [];
+
+    function sendMoney(ev) {
+        ev.preventDefault()
+        if (!receipentAccount.value || !amount.value) {
+        alert('Please fill in all fields.');
+        return;
+    }
+        let sendMoney = {
+            receipentBank: receipentBank.value,
+            receipentAccount: receipentAccount.value,
+            amount: amount.value
+        }
+        localStorage.setItem("transaction-amount", amount.value)
+        localStorage.setItem("receipent-acctNumber", receipentAccount.value)
+        sendmoneyArr.push(sendMoney);
+        console.log(sendMoney);
+        // let receiverAccount = JSON.parse(localStorage.getItem("defaultAccounts"));
+        // console.log(receiverAccount);
+
+        if (accountInput.value == gotten) {
+            alert("Can't send money to self");
+            return;
+        }
+
+        let storedPin = localStorage.getItem("transactionPin");
+        if(pin.value !== storedPin) {
+            alert("Wrong pin");
+            return;
+        } 
+
+        let currentBal = +localStorage.getItem('accBal');
+
+        if (currentBal < amount.value){
+            alert("Not enough funds");
+            return;
+        }
+
+        if (currentBal) {
+            currentBal -= amount.value;
+            localStorage.setItem('accBal', currentBal);
+        }
+
+        let receiverAccountnumber = localStorage.getItem('receiverAccountnumber');
+        let receiverAccountbal = localStorage.getItem('receiverAccountbal');
+
+        if (accountInput.value = receiverAccountnumber) {
+            currentBal -= amount.value;
+            let newBal = parseInt(receiverAccountbal) + parseInt(amount.value);
+            console.log(newBal);
+            
+            localStorage.setItem('newBal', newBal);
+        }
+
+        alert("Press OK to confirm transaction");
+        window.location.href = "sucess.html"
+        // window.location.href = "dashboard.html"
+    }
+</script>
+</html>

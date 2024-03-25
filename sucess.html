@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/success.css" rel="stylesheet" />
+    <title>Sucessful</title>
+</head>
+<body>
+    <div class="signup">
+        <img src="./images/check-circle.png" alt="">
+        <h2>Congratulations!</h2>
+        <div class="content">
+        <p id="show" class="p-tag"></p>
+        </div>
+        <button onclick="proceed()">Print receipt</button>
+    </div>
+</body>
+<script>
+
+    let screen = document.getElementById("show")
+    screen.innerHTML += `Your flight has been successfully booked.`
+
+    function proceed() {
+        window.location.href = "receipt.html"
+    }
+</script>
+</html>

@@ -1,0 +1,130 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <link href="./styles/airtime.css" rel="stylesheet">
+</head>
+<body>
+    <div class="signup">
+        <h2>Book Flight</h2>
+        <form action="" method="post" onsubmit="bookFlight(event)">
+            <label for="from">From:</label>
+            <select name="from" id="from" onchange="updateAmount()">
+                <option value="lagos">Lagos</option>
+                <option value="abuja">Abuja</option>
+                <option value="portharcourt">Portharcourt</option>
+                <option value="ibadan">Ibadan</option>
+            </select><br>
+
+            <label for="to">To:</label>
+            <select name="to" id="to" onchange="updateAmount()">
+                <option value="lagos">Lagos</option>
+                <option value="abuja">Abuja</option>
+                <option value="portharcourt">Portharcourt</option>
+                <option value="ibadan">Ibadan</option>
+            </select><br>
+
+            <label for="flight_class">Flight class:</label>
+            <select name="flight_class" id="flight_class">
+                <option value="first_class">First class</option>
+                <option value="economy">Economy</option>
+            </select><br><br>
+
+            <label for="amount">Amount:</label>
+            <div id="show"></div><br>
+
+            <button onclick="buyairtime(event)" type="submit">Book Flight</button>
+        </form>
+    </div>
+
+    <script>
+    let myUser = document.getElementById("user");
+    let networkType = document.getElementById("network")
+    let phoneNumber = document.getElementById("phone-number");
+    let amount = localStorage.getItem('flightAmount');
+
+        function updateAmount() {
+            var from = document.getElementById("from").value;
+            var to = document.getElementById("to").value;
+
+            var amount = 0;
+
+            if (from === "lagos" && to === "ibadan") {
+                amount = 15000;
+            } else if (from === "lagos" && to === "abuja") {
+                amount = 12000;
+            } else if (from === "lagos" && to === "portharcourt") {
+                amount = 13000;
+            } else if (from === "ibadan" && to === "portharcourt") {
+                amount = 15000;
+            } else if (from === "ibadan" && to === "lagos") {
+                amount = 13000;
+            } else if (from === "ibadan" && to === "abuja") {
+                amount = 13000;
+            } else if (from === "abuja" && to === "portharcourt") {
+                amount = 12000;
+            } else if (from === "abuja" && to === "lagos") {
+                amount = 15000;
+            } else if (from === "abuja" && to === "ibadan") {
+                amount = 13000;
+            } else if (from === "portharcourt" && to === "abuja") {
+                amount = 12000;
+            } else if (from === "portharcourt" && to === "ibadan") {
+                amount = 30000;
+            } else if (from === "portharcourt" && to === "lagos") {
+                amount = 15000;
+            } 
+            
+            
+            localStorage.setItem("flightAmount", amount);
+            document.getElementById("show").innerHTML = "NGN " + amount;
+        }
+
+        // Call updateAmount initially to display default amount
+        updateAmount();
+    
+
+    function buyairtime(ev) {
+        ev.preventDefault();
+    //     if (!phoneNumber.value || !amount.value) {
+    //     alert('Please fill in all fields.');
+    //     return;
+    // }
+
+    let currentBal = +localStorage.getItem('accBal');
+    let flightAmount = +localStorage.getItem('flightAmount');
+
+    if (currentBal < flightAmount){
+    alert("Not enough funds");
+    return;
+    }
+
+    if (currentBal) {
+    currentBal -= flightAmount;
+    localStorage.setItem('accBal', currentBal);
+    }
+
+        alert("Press OK to confirm transaction");
+        window.location.href = "sucess.html"
+
+
+        // let availableBalance = JSON.parse(localStorage.getItem("accountdetails"));
+        // console.log(availableBalance)
+        // let newBalance = availableBalance - amount.value;
+        // console.log(newBalance);
+        // // alert(`$${amount.value} airtime purchased successfully for ${phoneNumber.value}.`);
+
+        // localStorage.setItem("newBalance", JSON.stringify(newBalance));
+         
+        // window.location.href = "sucess.html"
+
+        // await window.location.reload("dashboard.html")
+    }   
+    </script>
+</body>
+</html>

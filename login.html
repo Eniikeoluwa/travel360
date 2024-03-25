@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>travel360</title>
+    <link href="./styles/login.css" rel="stylesheet">
+</head>
+<body style="background-color: red;">
+    <div class="signup">
+        <div>
+        <h2>Sign into your account</h2>
+        <h6>Login to your travel360 account</h6>
+        </div>
+        <div class="form">
+            <label>Email Address</label>
+            <input type="email" placeholder="" id="email"> 
+            <label>Password</label>
+            <input type="text" placeholder="" id="password">
+            <div class="pass"> 
+            <p>Have you forgotten password?</p>
+            <h4><a href="">click here to recover it</a></h4>
+            </div>
+            <div class="last-sec">
+            <button onclick="login(event)">Login</button>
+            <p>Do you not have a BankMe account?<a href="signup.html">Sign up here</a></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let currentUser = localStorage.getItem("loggedUser");
+        let userPassword = localStorage.getItem("userPassword");
+
+        function login(ev) {
+        ev.preventDefault()
+        if (!email.value || !password.value) {
+        alert('Please fill in all fields.');
+        return;
+    }
+      
+        let user = {
+            email: email.value,
+            password: password.value
+        }
+        console.log(user);
+
+        if(!currentUser){
+            alert("This user has not signed up");
+            return;
+        }
+
+        if (password.value !== userPassword) {
+            alert("Incorrect email or password");
+            return;
+        }
+
+        if (!localStorage.getItem('accBal')) {
+            localStorage.setItem('accBal', 100000);
+        }
+
+        alert("Login sucessful!");
+        window.location.href = "dashboard.html"
+        }
+</script>
+</body>
+</html>

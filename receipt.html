@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction receipt</title>
+    <link rel="stylesheet" href="./styles/success.css">
+</head>
+<style>
+    @media print {
+     button {
+      display: none;
+    }
+  }
+</style>
+<body>
+    <div class="signup">
+    <h1>Transaction Receipt</h1>
+    <img src="./images/pic5.png" alt="" />
+    <p id="transaction-amount"></p>
+    <p id="receipentacct-number"></p>
+    <p id="receipentacct-bank">Receipent Bank: BanKMe</p>
+    <p id="senderacct-number"></p>
+    <h4>Bank: BankMe</h4>
+    <button onclick="printReceipt()">Print</button>
+    <button onclick="proceedToDashboard()">Proceed to dashboard</button>
+    <button onclick="logout()">Logout</button>
+    </div>
+</body>
+<script>
+    let transactionAmount = document.getElementById("transaction-amount");
+    let receipentAcctNumber = document.getElementById("receipentacct-number");
+    let senderAcctNumber = document.getElementById("senderacct-number");
+
+    let receivedAcctNumber = (localStorage.getItem("receipent-acctNumber"))
+
+    if(!receivedAcctNumber){
+        receipentAcctNumber.style.display = "none";
+
+    } else {
+        receipentAcctNumber.textContent = `Receipent Account Number: ${receivedAcctNumber}`
+    }
+
+    transactionAmount.textContent = `Amount: $${JSON.parse(localStorage.getItem("transaction-amount"))}`
+    senderAcctNumber.textContent = `Sender Account Number: ${JSON.parse(localStorage.getItem("accountNumber"))};`
+
+    function printReceipt() {
+        window.print();
+    }
+    function proceedToDashboard() {
+        window.location.href = "dashboard.html";
+    }
+    function logout() {
+        window.location.href = "welcomepage.html";
+    }
+</script>
+</html>
