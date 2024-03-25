@@ -16,6 +16,25 @@ input, select, textarea {
     margin-top: 4px;
 }
 
+img {
+    width: 100%;
+}
+
+.hotel-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.hotel-block .hotel-info {
+    width: 60%;
+}
+
+.hotel-block img {
+    width: 40%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
 .signup {
     position: fixed;
     top: 50%;
@@ -53,6 +72,9 @@ input, select, textarea {
     box-shadow: -1px 18px 37px -15px rgba(0, 0, 0, 0.369) inset;
     -webkit-box-shadow: -1px 18px 37px -15px rgba(0,0,0,0.369) inset;
     -moz-box-shadow: -1px 18px 37px -15px rgba(0,0,0,0.369) inset;
+}
+.hotel-card {
+    margin-bottom: 10px;
 }
 
 #network {
