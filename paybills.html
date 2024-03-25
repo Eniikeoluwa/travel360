@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Booking</title>
-    <link rel="stylesheet" href="./styles/dashboard.css">
+    <link rel="stylesheet" href="./styles/paybills.css">
 </head>
 <body>
-    <h1>Hotel Booking</h1>
-
-    <div class="filter-section">
-        <label for="city">Choose a city:</label>
-        <select id="city">
-            <option value="all">All Cities</option>
-            <option value="ibadan">Ibadan</option>
-            <option value="lagos">Lagos</option>
-            <option value="abuja">Abuja</option>
-            <option value="portharcourt">Port Harcourt</option>
-        </select>
-        <button onclick="filterHotels()">Search</button>
-    </div>
-
-    <div class="hotel-section">
-        <div id="hotels">
-            <!-- Hotels will be dynamically populated here -->
+    <div class="signup">
+        <h1>Hotel Booking</h1>
+    
+        <div class="filter-section">
+            <div class="form-select">
+                <label for="city">Choose a city:</label>
+                <select id="city">
+                    <option value="all">All Cities</option>
+                    <option value="ibadan">Ibadan</option>
+                    <option value="lagos">Lagos</option>
+                    <option value="abuja">Abuja</option>
+                    <option value="portharcourt">Port Harcourt</option>
+                </select>
+            </div>
+            <button onclick="filterHotels()">Search</button>
+        </div>
+    
+        <div class="hotel-section">
+            <div id="hotels">
+                <!-- Hotels will be dynamically populated here -->
+            </div>
         </div>
     </div>
 

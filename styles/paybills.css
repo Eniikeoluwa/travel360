@@ -26,8 +26,33 @@ input, select, textarea {
     background-color: white;
     border-radius: 3px;
     width: 400px;
-    min-height: 470px;
+    height: 600px;
+    overflow: hidden;
     border-radius: 15px;
+}
+
+.filter-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.filter-section .form-select > * {
+    width: 100%;
+}
+
+.hotel-section {
+    overflow-y: scroll;
+    height: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    box-shadow: -1px 18px 37px -15px rgba(0, 0, 0, 0.369) inset;
+    -webkit-box-shadow: -1px 18px 37px -15px rgba(0,0,0,0.369) inset;
+    -moz-box-shadow: -1px 18px 37px -15px rgba(0,0,0,0.369) inset;
 }
 
 #network {
@@ -71,6 +96,6 @@ button {
     color: white;
     background-color: rgb(55, 97, 205);
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
