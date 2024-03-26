@@ -92,6 +92,7 @@
             localStorage.setItem("scheduleDateTime", scheduleDateTime);
             localStorage.setItem("flightAmount", amount);
             document.getElementById("show").innerHTML = "NGN " + amount;
+            
         }
 
         // Call updateAmount initially to display default amount
@@ -100,10 +101,6 @@
 
     function buyairtime(ev) {
         ev.preventDefault();
-    //     if (!phoneNumber.value || !amount.value) {
-    //     alert('Please fill in all fields.');
-    //     return;
-    // }
     let currentBal = +localStorage.getItem('accBal');
     let flightAmount = +localStorage.getItem('flightAmount');
 
@@ -118,20 +115,9 @@
     }
 
         alert("Press OK to confirm transaction");
-        window.location.href = "confirm.html"
+        window.location.href = "sucess.html"
 
 
-        // let availableBalance = JSON.parse(localStorage.getItem("accountdetails"));
-        // console.log(availableBalance)
-        // let newBalance = availableBalance - amount.value;
-        // console.log(newBalance);
-        // // alert(`$${amount.value} airtime purchased successfully for ${phoneNumber.value}.`);
-
-        // localStorage.setItem("newBalance", JSON.stringify(newBalance));
-         
-        // window.location.href = "sucess.html"
-
-        // await window.location.reload("dashboard.html")
     }   
     </script>
 

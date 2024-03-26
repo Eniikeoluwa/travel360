@@ -1,0 +1,68 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <link href="./styles/airtime.css" rel="stylesheet">
+</head>
+<body>
+    <div class="signup">
+        <h2>Book Hotel</h2>
+        <form action="" method="post" onsubmit="bookFlight(event)">
+            <label for="checkInDate">Check-In Date:</label>
+            <input type="date" id="checkInDate" name="checkInDate" required><br>
+
+            <label for="checkOutDate">Check-Out Date:</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" required><br>
+
+            <label for="numOfDays">Number of Days:</label>
+            <input type="number" id="numOfDays" name="numOfDays" min="1" required><br>
+
+            <label for="amount">Amount:</label>
+            <div id="show"></div><br>
+
+            <button onclick="buyairtime(event)" type="submit">Book Hotel</button>
+        </form>
+    </div>
+    <script>
+    let checkInDate = document.getElementById("checkInDate");
+    let checkOutDate = document.getElementById("checkOutDate");
+    function buyairtime(ev) {
+    ev.preventDefault();
+    let numberOfDays = document.getElementById("numOfDays").value
+    if(!numberOfDays) {
+        alert("Please fill in all details!");
+        return;
+    }
+    let hotelPrice = localStorage.getItem("hotelPrice")
+    let amount = hotelPrice * numberOfDays;
+    document.getElementById("show").innerHTML =  "NGN " + amount;
+
+
+    let currentBal = +localStorage.getItem('accBal');
+    let flightAmount = +localStorage.getItem('flightAmount');
+
+    if (currentBal < amount){
+    alert("Not enough funds");
+    return;
+    }
+
+    if (currentBal) {
+    currentBal -= amount;
+    localStorage.setItem('accBal', currentBal);
+    }
+
+    alert("Press OK to pay ₦ " + amount)
+    window.location.href = "hotelbooked.html";
+
+
+    }
+ 
+    </script>
+
+</body>
+</html>

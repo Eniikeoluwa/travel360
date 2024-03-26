@@ -34,14 +34,14 @@
     <script>
         // Define hotel data (you can replace this with your actual data)
         var hotelsData = [
-            { name: "Hotel in Ibadan 1", city: "ibadan", price: 5000, description: "Description of Hotel 1 in Ibadan", image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/33/b1/a3/hotel-building-exterior.jpg?w=1200&h=-1&s=1' },
-            { name: "Hotel in Ibadan 2", city: "ibadan", price: 6000, description: "Description of Hotel 2 in Ibadan", image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/91/a3/4d/eko-main-building.jpg?w=1200&h=-1&s=1' },
-            { name: "Hotel in Lagos 1", city: "lagos", price: 7000, description: "Description of Hotel 1 in Lagos", image: 'https://content.r9cdn.net/himg/f0/0d/1a/ice-38065-60804542_3XL-219514.jpg' },
-            { name: "Hotel in Lagos 2", city: "lagos", price: 8000, description: "Description of Hotel 2 in Lagos", image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/f0/4a/57/hotel-exterior.jpg?w=300&h=200&s=1' },
-            { name: "Hotel in Abuja 1", city: "abuja", price: 9000, description: "Description of Hotel 1 in Abuja", image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/8b/a1/5e/presidential-suite.jpg?w=1200&h=-1&s=1' },
-            { name: "Hotel in Abuja 2", city: "abuja", price: 10000, description: "Description of Hotel 2 in Abuja", image: 'https://9jatop10.com/wp-content/uploads/2020/05/FraserSuites1.jpg' },
-            { name: "Hotel in Port Harcourt 1", city: "portharcourt", price: 5500, description: "Description of Hotel 1 in Port Harcourt", image: 'https://www.ahstatic.com/photos/c0s0_ho_00_p_1024x768.jpg' },
-            { name: "Hotel in Port Harcourt 2", city: "portharcourt", price: 6500, description: "Description of Hotel 2 in Port Harcourt", image: 'https://cdn.businessday.ng/2021/03/business-suite.jpg' }
+            { name: "Golden Tulip Hotel", city: "ibadan", price: 5000, description: "Lovely itinerary hotel", image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/33/b1/a3/hotel-building-exterior.jpg?w=1200&h=-1&s=1' },
+            { name: "Carlton Gate Hotel", city: "ibadan", price: 6000, description: "Lovely itinerary hotel", image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/91/a3/4d/eko-main-building.jpg?w=1200&h=-1&s=1' },
+            { name: "Oriental Hotel", city: "lagos", price: 7000, description: "Lovely itinerary hotel", image: 'https://content.r9cdn.net/himg/f0/0d/1a/ice-38065-60804542_3XL-219514.jpg' },
+            { name: "Eko Hotel", city: "lagos", price: 8000, description: "Lovely itinerary hotel", image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/f0/4a/57/hotel-exterior.jpg?w=300&h=200&s=1' },
+            { name: "Maitama Hotel", city: "abuja", price: 9000, description: "Lovely itinerary hotel", image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/8b/a1/5e/presidential-suite.jpg?w=1200&h=-1&s=1' },
+            { name: "BTE Hotel", city: "abuja", price: 10000, description: "Lovely itinerary hotel", image: 'https://9jatop10.com/wp-content/uploads/2020/05/FraserSuites1.jpg' },
+            { name: "Intercontinental Hotel", city: "portharcourt", price: 5500, description: "Lovely itinerary hotel", image: 'https://www.ahstatic.com/photos/c0s0_ho_00_p_1024x768.jpg' },
+            { name: "Supreme Hotel", city: "portharcourt", price: 6500, description: "Lovely itinerary hotel", image: 'https://cdn.businessday.ng/2021/03/business-suite.jpg' }
         ];
 
         function filterHotels() {
@@ -84,9 +84,8 @@
                 localStorage.setItem("accBal", currentBal);
                 console.log("Hotel Price:", price);
             }
-
-            alert("Press OK to confirm transaction");
-            window.location.href = "confirm.html";
+            localStorage.setItem("hotelPrice", price);
+            window.location.href = "bookhotel.html";
        }
 
         // Initial call to filterHotels to display all hotels initially
