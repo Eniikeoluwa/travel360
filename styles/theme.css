@@ -1,0 +1,141 @@
+/* Global Theme System with CSS Custom Properties */
+
+:root {
+    /* Light Theme Variables */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-gradient: linear-gradient(0deg, rgba(19,19,19,1) 0%, rgba(30,30,30,0.8155637254901961) 24%, rgba(0,212,255,0) 100%), url('../images/background.avif');
+    --text-primary: #000000;
+    --text-secondary: #5E5E5E;
+    --text-light: #666666;
+    --border-color: rgba(186, 181, 181, 0.5);
+    --shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    --shadow-light: 0 0 10px rgba(186, 181, 181, 0.5);
+    
+    /* Brand colors remain consistent */
+    --brand-primary: #0066F6;
+    --brand-secondary: #36C4A2;
+    --accent-green: #D5F6EE;
+    --accent-yellow: #FFF1D1;
+    --accent-blue: #F5F9FF;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-gradient: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(20,20,20,0.9) 24%, rgba(0,100,200,0.1) 100%), url('../images/background.avif');
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-light: #999999;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    --shadow-light: 0 0 10px rgba(255, 255, 255, 0.1);
+    
+    /* Adjusted accent colors for dark theme */
+    --accent-green: #0d3328;
+    --accent-yellow: #3d3520;
+    --accent-blue: #1a2633;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--brand-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: var(--shadow-light);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: #0052cc;
+}
+
+/* Base theme application */
+body {
+    background: var(--bg-gradient) !important;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Container backgrounds */
+.container,
+.signup {
+    background-color: var(--bg-primary) !important;
+    box-shadow: var(--shadow) !important;
+    color: var(--text-primary);
+}
+
+/* Content sections */
+.firstcontent,
+.secondcontent,
+.last-content {
+    background-color: var(--bg-primary) !important;
+    box-shadow: var(--shadow-light) !important;
+    color: var(--text-primary);
+}
+
+/* Text colors */
+.header p,
+.content p,
+.last p,
+p {
+    color: var(--text-primary) !important;
+}
+
+/* Secondary text */
+.but {
+    color: var(--text-secondary) !important;
+}
+
+/* Input and form elements */
+input, select, textarea {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--brand-primary);
+}
+
+/* Ensure brand colors remain consistent */
+.balance {
+    background-color: var(--brand-primary) !important;
+}
+
+.material-icons {
+    color: var(--brand-secondary) !important;
+}
+
+.content .material-icons {
+    background-color: var(--accent-blue) !important;
+    color: var(--brand-primary) !important;
+}
+
+.material-symbols-outlined {
+    color: var(--brand-primary) !important;
+}
+
+/* Accent backgrounds adapt to theme */
+.send,
+.atm {
+    background-color: var(--accent-green) !important;
+}
+
+.withdraw,
+.bills {
+    background-color: var(--accent-yellow) !important;
+}
